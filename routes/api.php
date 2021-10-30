@@ -3,8 +3,10 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-# first, you have to import the controller
+# First, you have to import the controller
 use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\StudentsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -21,14 +23,22 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// create route GET for returning a data animals
+# Animals API
+// Create route GET for returning a data animals
 Route::get('/animals', [AnimalController::class, 'index']);
 
-// create route POST for returning a data animals
+// Create route POST for returning a data animals
 Route::post('/animals', [AnimalController::class, 'store']);
 
-// create route PUT for returning a data animals
+// Create route PUT for returning a data animals
 Route::put('/animals/{id}', [AnimalController::class, 'update']);
 
-// create route DELETE for returning a data animals
+// Create route DELETE for returning a data animals
 Route::delete('/animals/{id}', [AnimalController::class, 'destroy']);
+
+
+# Students API
+Route::get('/students', [StudentsController::class, 'index']);
+Route::post('/students', [StudentsController::class, 'create']);
+Route::put('/students/{id}', [StudentsController::class, 'update']);
+Route::delete('/students/{id}', [StudentsController::class, 'destroy']);
